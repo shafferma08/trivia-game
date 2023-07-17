@@ -209,45 +209,115 @@ let userSelection = false
 ```
 The `userSelection` variable is a boolean that indicates whether the user has selected an answer for the current question. It's initially set to `false`, because no answer has been selected at the start of the game.
 
-In summary, these variables are used to keep track of the current game state, including the current user, score, displayed section, and current question and answer. They're updated throughout the game as the user interacts with the game.
+These variables are used to keep track of the current game state, including the current user, score, displayed section, and current question and answer. They're updated throughout the game as the user interacts with the game.
 
-### Defining helper functions
+In JavaScript, a `Map` is a built-in object that can hold key-value pairs and remembers the original insertion order of the keys. `Map` objects are collections of elements where each element is stored as a key-value pair. `Map`s are similar to `Object`s, but there are some key differences:
+
+- The keys of a `Map` can be any type, while the keys of an `Object` can only be strings or symbols.
+- `Map`s remember the insertion order of elements, while `Object`s do not.
+- `Map`s have methods that make it easier to iterate over their elements.
 
 ```javascript
-const setStartGameInvalidState = () => {
-...
-}
+// Create map to store detailed results
+const currentUserDetailedResults = new Map()
+currentUserDetailedResults.set("results", [])
+```
 
-const userExists = (username) => {
-...
-}
+Here, a `Map` is created and stored in the `currentUserDetailedResults` variable. The `set` method is then used to add a key-value pair to the `Map`. The key is `"results"`, and the value is an empty array `[]`. This `Map` will store the detailed results of the current user's game. The `"results"` key will map to an array of results, where each result is an object containing details about a question and the user's answer.
 
-const checkAnswer = (question, userAnswer, correct) => {
-...
-}
+```javascript
+// Create map to store all users stats 
+const usersStats = new Map()
+usersStats.set("stats", [])
+```
 
-const loadQuestionAndAnswers = () => {
-...
+Similarly, a `Map` is created and stored in the `usersStats` variable. The `set` method is used to add a key-value pair to the `Map`. The key is `"stats"`, and the value is an empty array `[]`. This `Map` will store the statistics for all users. The `"stats"` key will map to an array of user stats, where each stat is an object containing details about a user's game. 
+
+In general, `Map`s are a useful tool in JavaScript for when you need a collection of key-value pairs, and you want to be able to use any type of key and maintain the insertion order of the elements.
+
+This piece of code is iterating through `usersValuesArray`, which contains user data, and for each user, it's doing two things:
+
+1. Adding the user's username to the `gameUsers` set.
+2. Adding the user object to the `usersStats` map.
+
+Let's break it down:
+
+```javascript
+for (const user of usersValuesArray) {
+  gameUsers.add(user.username)
+  usersStats.entries().next().value[1].push(user)
 }
 ```
 
-These are helper functions defined to manage the game state, validate user input, update game statistics, and load questions and answers. They are used in various parts of the code to perform these tasks.
+- `for (const user of usersValuesArray) {...}`: This is a `for...of` loop that iterates over `usersValuesArray`. On each iteration, it assigns the current element to the `user` variable.
 
-### Adding event listeners
+- `gameUsers.add(user.username)`: This line adds the `username` of the current `user` to the `gameUsers` set. As `Set`s only store unique values, this ensures that each username in `gameUsers` is unique.
+
+- `usersStats.entries().next().value[1].push(user)`: This line is a bit more complex. It's adding the full `user` object to the `usersStats` map. Here's how it works:
+
+    - `usersStats.entries()` returns a new iterator object that contains an array of `[key, value]` for each element in the `usersStats` map.
+
+    - `.next()` advances this iterator to the next element (which is the first element in this case, since we just created the iterator).
+
+    - `.value` gets the value of the iterator, which is an array of `[key, value]`.
+
+    - `[1]` gets the second element of this array, which is the value associated with the `"stats"` key in the `usersStats` map. This is the array where we're storing user stats.
+
+    - `.push(user)` adds the `user` object to this array.
+
+This code is populating the `gameUsers` set with unique usernames, and it's populating the `usersStats` map with user objects for further usage in the game.
+
+This block of code is used to add 10 unique questions from the `questions` JSON file to the `randomTen` set. Here's a step-by-step explanation:
 
 ```javascript
-nextSectionTriggers.forEach((trigger) => {
-  trigger.addEventListener('click', (e) => nextSectionClickListener(e))
-})
+while (randomTen.size < 10) {
+  ...
+}
+```
+This `while` loop keeps running until the `randomTen` set has 10 elements. Since `Set`s only store unique values, this ensures that 10 unique questions are added.
 
-answers.forEach((answer) => {
-  answer.addEventListener('click', (e) => toggleSelectIndicator(e))
-})
+```javascript
+const randomIndex = Math.floor(Math.random() * questionsKeysArray.length)
+```
+This line generates a random index that is within the bounds of the `questionsKeysArray`. `Math.random()` generates a random decimal number between 0 (inclusive) and 1 (exclusive), and multiplying it by `questionsKeysArray.length` scales this number to the range of possible indices. `Math.floor()` then rounds this number down to the nearest whole number to ensure it's a valid array index.
 
-usernameInput.addEventListener('input', checkUsernameValidity)
-usernameInput.addEventListener('blur', checkUsernameValidity)
+```javascript
+const randomObjectKey = questionsKeysArray[randomIndex]
+```
+This line gets the key at the randomly generated index from `questionsKeysArray`. This key corresponds to a question in the `questions` JSON object.
 
-playAgainBtn.addEventListener('click', () => window.location.reload())
+```javascript
+if (randomTen.has(questions[randomObjectKey])) {
+  continue;
+} else {
+  randomTen.add(questions[randomObjectKey])
+}
+```
+This `if...else` statement checks if the question corresponding to the randomly selected key is already in the `randomTen` set. 
+
+- If the question is already in the `randomTen` set (i.e., `randomTen.has(questions[randomObjectKey])` is `true`), the `continue` statement skips the rest of the current loop iteration and goes back to the `while` condition check. This is done because we don't want duplicate questions in our set.
+  
+- If the question is not in the `randomTen` set, it gets added with `randomTen.add(questions[randomObjectKey])`.
+
+So, in summary, this block of code selects 10 unique questions from the `questions` JSON file and adds them to the `randomTen` set.
+
+The `values()` method in JavaScript returns a new iterator object that contains the values for each element in the `Set` object in insertion order.
+
+In this line of code:
+
+```javascript
+const randomQuestionSet = randomTen.values()
 ```
 
-These lines add event listeners to various DOM elements. When the user interacts with these elements (for example, by clicking a button or entering input), the corresponding event listener function is triggered. For instance, when the "Play Again" button is clicked, the page is reloaded.
+`randomTen.values()` returns an iterator that contains the values of the `randomTen` set, and this iterator is then stored in the `randomQuestionSet` variable. 
+
+An iterator is an object that provides a next() method which returns the next item in the sequence. This method returns an object with two properties: done and value. You can access these values through destructuring assignment:
+
+```javascript
+const iterator = randomTen.values();
+const firstQuestion = iterator.next().value;
+```
+
+In this example, `firstQuestion` would store the first question in the `randomTen` set. 
+
+Iterators can be useful when you want to work with the items in a collection one at a time. In the context of the trivia game, the `randomQuestionSet` iterator can be used to access the questions one by one as the game progresses.
