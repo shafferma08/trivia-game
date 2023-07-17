@@ -110,6 +110,8 @@ Similarly, `userStatsItems` is a NodeList that contains all elements with the cl
 
 The spread operator `...` and the array literal `[]` syntax are used together to create new arrays from single DOM elements and NodeLists. These arrays can then be manipulated using standard array methods in JavaScript, providing more flexibility than NodeLists.
 
+### `questionsKeysArray` and `usersValuesArray`
+
 The `Object.keys()` method returns an array of a given object's own enumerable property names, iterated in the same order that a normal loop would. 
 
 The `Object.values()` method returns an array of a given object's own enumerable property values, in the same order as that provided by a for...in loop (the difference being that a for-in loop enumerates properties in the prototype chain as well).
@@ -125,6 +127,8 @@ const usersValuesArray = Object.values(users)
 In this line, `Object.values(users)` is returning an array of values from the `users` object. This means it's creating an array where each element is a value from the `users` JSON object. 
 
 The reason we don't need to use brackets here is because `Object.keys()` and `Object.values()` already return arrays. The brackets are used when we need to merge multiple arrays or values into a new array, but in this case, we're just creating a new array from the keys or values of an object, so no merging is needed.
+
+### `randomTen` and gameUsers``
 
 In JavaScript, a `Set` is a built-in object that stores unique values of any type. Once a value is stored in a `Set`, it cannot be repeated within the same `Set`.
 
@@ -211,6 +215,8 @@ The `userSelection` variable is a boolean that indicates whether the user has se
 
 These variables are used to keep track of the current game state, including the current user, score, displayed section, and current question and answer. They're updated throughout the game as the user interacts with the game.
 
+### currentUserDetailedResults
+
 In JavaScript, a `Map` is a built-in object that can hold key-value pairs and remembers the original insertion order of the keys. `Map` objects are collections of elements where each element is stored as a key-value pair. `Map`s are similar to `Object`s, but there are some key differences:
 
 - The keys of a `Map` can be any type, while the keys of an `Object` can only be strings or symbols.
@@ -225,6 +231,8 @@ currentUserDetailedResults.set("results", [])
 
 Here, a `Map` is created and stored in the `currentUserDetailedResults` variable. The `set` method is then used to add a key-value pair to the `Map`. The key is `"results"`, and the value is an empty array `[]`. This `Map` will store the detailed results of the current user's game. The `"results"` key will map to an array of results, where each result is an object containing details about a question and the user's answer.
 
+### usersStats 
+
 ```javascript
 // Create map to store all users stats 
 const usersStats = new Map()
@@ -234,6 +242,8 @@ usersStats.set("stats", [])
 Similarly, a `Map` is created and stored in the `usersStats` variable. The `set` method is used to add a key-value pair to the `Map`. The key is `"stats"`, and the value is an empty array `[]`. This `Map` will store the statistics for all users. The `"stats"` key will map to an array of user stats, where each stat is an object containing details about a user's game. 
 
 In general, `Map`s are a useful tool in JavaScript for when you need a collection of key-value pairs, and you want to be able to use any type of key and maintain the insertion order of the elements.
+
+### for loop
 
 This piece of code is iterating through `usersValuesArray`, which contains user data, and for each user, it's doing two things:
 
@@ -266,6 +276,8 @@ for (const user of usersValuesArray) {
     - `.push(user)` adds the `user` object to this array.
 
 This code is populating the `gameUsers` set with unique usernames, and it's populating the `usersStats` map with user objects for further usage in the game.
+
+### while loop
 
 This block of code is used to add 10 unique questions from the `questions` JSON file to the `randomTen` set. Here's a step-by-step explanation:
 
@@ -300,6 +312,8 @@ This `if...else` statement checks if the question corresponding to the randomly 
 - If the question is not in the `randomTen` set, it gets added with `randomTen.add(questions[randomObjectKey])`.
 
 So, in summary, this block of code selects 10 unique questions from the `questions` JSON file and adds them to the `randomTen` set.
+
+### randomQuestionSet
 
 The `values()` method in JavaScript returns a new iterator object that contains the values for each element in the `Set` object in insertion order.
 
