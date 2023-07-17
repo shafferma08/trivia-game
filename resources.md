@@ -1,4 +1,4 @@
-Sure, here are some resources that cover the various concepts and methods used in this trivia game code:
+Resources that cover the various concepts and methods used in this trivia game code:
 
 1. **JavaScript Fundamentals**:
    - [MDN Web Docs: JavaScript Guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide)
