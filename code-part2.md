@@ -1,4 +1,12 @@
+Here's a high-level overview of what the code does:
 
+1. Defines several helper functions to manage game state, validate user input, and update game statistics.
+
+2. Adds event listeners to various DOM elements to handle user interactions such as clicking on buttons and entering input.
+
+3. In the end, adds a click listener to the "Play Again" button which reloads the page when clicked.
+
+Let's break it down in more detail. Here are the key parts of the code:
 
 ### Defining helper functions
 
