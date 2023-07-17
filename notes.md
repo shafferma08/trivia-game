@@ -1,4 +1,4 @@
-Absolutely, here are some notes summarizing the main concepts we've covered in the context of the trivia game code:
+Here are some notes summarizing the main concepts we've covered in the trivia game code:
 
 1. **JSON Data**: The data for the trivia game is stored in two JSON files: `questions.json` and `users.json`. JSON (JavaScript Object Notation) is a lightweight data-interchange format that's easy for humans to read and write and easy for machines to parse and generate.
 
@@ -17,5 +17,3 @@ Absolutely, here are some notes summarizing the main concepts we've covered in t
 8. **Control Flow**: The trivia game uses various control flow structures, including `if` statements, `while` loops, and `for` loops, to control the flow of the game.
 
 9. **Functions**: Functions are used to encapsulate blocks of code that perform specific tasks. In the trivia game, there are functions for checking the validity of the username, loading the questions and answers, checking the user's answer, moving to the next section, and handling the end of the game.
-
-These notes should provide a good summary of the main concepts used in the trivia game code. As your students learn JavaScript, they'll become familiar with these concepts and how to use them to solve problems and build interactive web applications.
