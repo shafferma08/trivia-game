@@ -2,15 +2,15 @@ The directory contains the following files:
 
 - `index.html`: This is the HTML file that structures the webpage.
 - `style.css`: This is the CSS file that styles the webpage.
-- `main.js`: This is the main JavaScript file that provides functionality to the webpage. This is likely where the bulk of the trivia game logic is implemented.
-- `users.json`: This is likely a JSON file that contains data about the users.
-- `modal.js`: This JavaScript file likely handles the functionality of a modal (a type of dialog box/pop-up) on the webpage.
-- `questions.json`: This is likely a JSON file that contains the trivia questions.
-- `assets`: This is likely a directory containing various media files used on the webpage.
+- `main.js`: This is the main JavaScript file that provides functionality to the webpage. This is where the bulk of the trivia game logic is implemented.
+- `users.json`: This is a JSON file that contains data about the users.
+- `modal.js`: This JavaScript file handles the functionality of a modal (a type of dialog box/pop-up) on the webpage.
+- `questions.json`: This is a JSON file that contains the trivia questions.
+- `assets`: This is a directory containing various media files used on the webpage.
 
-Let's read the `main.js` file, as you mentioned wanting to understand the JavaScript code.
+## main.js
 
-Alright, the JavaScript code for the trivia game is quite extensive and well-structured. Here's a high-level overview of what the code does:
+Here's a high-level overview of what the code does:
 
 1. Imports the JSON files which contain the questions and users.
 
@@ -26,7 +26,7 @@ Alright, the JavaScript code for the trivia game is quite extensive and well-str
 
 7. In the end, adds a click listener to the "Play Again" button which reloads the page when clicked.
 
-Let's break it down in more detail. Here are the key parts of the code:
+Here are the key parts of the code:
 
 ### Importing JSON files
 
@@ -114,5 +114,3 @@ playAgainBtn.addEventListener('click', () => window.location.reload())
 ```
 
 These lines add event listeners to various DOM elements. When the user interacts with these elements (for example, by clicking a button or entering input), the corresponding event listener function is triggered. For instance, when the "Play Again" button is clicked, the page is reloaded.
-
-We can go through each part in detail and discuss how they work. Let me know where you would like to start.
